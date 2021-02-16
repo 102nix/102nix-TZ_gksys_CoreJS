@@ -21,7 +21,7 @@ function getBrackets (str) {
 
     result += currentVal
   })
-  
+
   return result
 }
 
@@ -29,25 +29,25 @@ function checkBrackets (str) {
   let arrFormStr = str.split('')
   let stack = []
 
-  for (let i = 0; i < arrFormStr.length; i++) {
-    
+  arrFormStr.forEach = (bracket => {
+  
     let openBr = ['(', '{', '[', '<']
-    let indexOpen = openBr.indexOf(arrFormStr[i])
+    let indexOpen = openBr.indexOf(bracket)
     if (indexOpen !== -1) stack.push(indexOpen)
     
     let closeBr = [')', '}', ']', '>']
-    let indexClose = closeBr.indexOf(arrFormStr[i])
+    let indexClose = closeBr.indexOf(bracket)
     if (indexClose !== -1) {
       indexOpen = stack.pop()
       if (indexOpen !== indexClose) return false
     }
-  }
+  })
 
   if (stack.length !== 0) return false
 
   return true
 }
 
-const str = '((])'
+const str = '{(){])'
 console.log(getBrackets(str))
 console.log(checkBrackets(str))
